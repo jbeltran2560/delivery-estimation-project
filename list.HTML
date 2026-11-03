@@ -4,7 +4,38 @@
 <title>Package Estimation - List</title>
 </head>
 <body>
-<h1>List of Past deliveries</h1>
+<h1>Add Item to List</h1>
+<!-- Form for User Input -->
+<form action="form_complete.php" method="post">
+    <!-- Delivery Name -->
+    <label for = "fname"> Name of delivery:</label><br>
+    <input type = "text" id = "fname" name = "fname" maxlength="20" size="20" value="Example" required><br>
+    <span class="error"> <?php echo $fnmEr;?></span>
+    <!-- Day of Order -->
+    <label for = "ffrst"> When did you order: </label><br>
+    <input type = "date" id="ffrst" name="ffrst" min="2000-01-01" value="2026-11-01" required><br>
+    <!-- Intended Delivery -->
+    <label for = "fexpt"> When was the expected delivery: </label><br>
+    <input type = "date" id="fexpt" name="fexpt" min="2000-01-01" value="2026-11-01" required><br>
+    <!-- Actual Delivery -->
+    <label for = "factu"> When did the package arrive: </label><br>
+    <input type = "date" id="factu" name="factu" min="2000-01-01" value="2026-11-01" required><br>
+    <!-- Package Type -->
+    <label for = "ftype"> Type of package</label><br>
+    <select id = "ftype" name = "ftype">
+        <option value="post">Postcard</option>
+        <option value="lett">Letter</option>
+        <option value="flat">Flat envelope</option>
+        <option value="prcl">Parcel</option>
+    </select> <br>
+    <!-- Package Size -->
+    <label for = "fsize"> length of package in inches:</label> <br>
+    <input type="number" id="fsize" name="fsize" min="3" max="130" value="4" required><br>
+    <button type="submit">Add Item</button>
+    <button type="reset">Clear Item</button>
+</form>
+<button onclick="alert('Okay')">Load</button>
+<button onclick="document.location='listRead.php'">Print Entire List</button>
 <p><a href = "calculations.html">Calculations</a></p>
 <p><a href = "homepage.html">Return Home</a></p>
 </body>

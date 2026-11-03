@@ -4,13 +4,24 @@
 <title>Package Estimation - Calculations</title>
 </head>
 <body>
-<h1> Calculations </h1>
+<h1> Calculations Delivery Time </h1>
+
+<h2> Delivery Time </h2>
+<p> Choose either option below.</p>
+
+<form action = "cal.php" method = "post">
+    <input type = "radio" id = "min" name="type" value = "min">
+    <label for = "min">Min</label><br>
+    <input type = "radio" id = "max" name="type" value = "max">
+    <label for = "max">Max</label><br>
+    <button type="submit">Calculate</button>
+</form>
+<!-- <?php $myfile = fopen("newfile.txt", "w") or die("File not found."); ?> -->
 <h2>Troubleshooting</h2>
 <p>The list must contain at least two entries in order to work properly.</p>
 <p>Check the data if estimations are inaccurate.</p>
-<p>Always make a backup of the list.</p>
+<p>Always make a backup of the list in case of the file being lost.</p>
 <p><a href = "list.html">Modify list</a></p>
 <p><a href = "homepage.html">Return Home</a></p>
-
 </body>
 </html>
