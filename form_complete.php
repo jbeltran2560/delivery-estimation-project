@@ -8,7 +8,9 @@ Expected: "<?php echo $_POST["fexpt"];?>"<br>
 Actual: "<?php echo $_POST["factu"];?>"<br>
 Type: "<?php echo $_POST["ftype"];?>"<br>
 Size: "<?php echo $_POST["fsize"];?>"<br>
+
 <?php
+
 //variables
 //error
 $e = 0;
@@ -53,14 +55,6 @@ function dataRange($firstDate, $secndDate,$timeDate) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] =="POST") {
-    //Valid Name
-    /*
-    if (empty($_POST["fname"])){
-        echo 'Name must contain at least one character.<br>';
-    } else {
-        //fwrite($lmake, $_POST["fname"]);
-        //echo 'Name successfully added.<br>';
-    }*/
     
     //Valid Date
     futureCheck($dateOr);
@@ -116,10 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] =="POST") {
     //Write to File
     //error check
     if($e == 0) {
-        $a = $_POST["fname"] . " " . $_POST["ftype"] . " " . $_POST["fsize"] .  " " . $dtOr . " " . $dtEx . " " . $dtOr;
+        $a = $_POST["fname"] . "," . $_POST["ftype"] . "," . $_POST["fsize"] .  "," . $dtOr . "," . $dtEx . "," . $dtAc;
         echo 'Item successfully added to list.';
-        //fwrite($lmake, $_POST["fname"]);
-        //fwrite($lmake, $_POST["fsize"]);
         fwrite($lmake, $a);
         fwrite($lmake, $b);
     } else {
