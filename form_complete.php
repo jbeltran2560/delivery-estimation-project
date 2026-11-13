@@ -8,7 +8,6 @@ Expected: "<?php echo $_POST["fexpt"];?>"<br>
 Actual: "<?php echo $_POST["factu"];?>"<br>
 Type: "<?php echo $_POST["ftype"];?>"<br>
 Size: "<?php echo $_POST["fsize"];?>"<br>
-
 <?php
 
 //variables
@@ -54,6 +53,53 @@ function dataRange($firstDate, $secndDate,$timeDate) {
     }
 }
 
+define("POSTCARD", "postcard");
+define("POST_MAX", 6);
+define("POST_MIN", 3);
+define("LETTER", "letter");
+define("LETT_MAX", 11);
+define("LETT_MIN", 5);
+define("FLAT", "envelope");
+define("FLAT_MAX", 15);
+define("FLAT_MIN", 12);
+define("PARCEL", "parcel");
+define("PRCL_MAX", 27);
+define("PRCL_MIN", 6);
+define("UNDEFINED", "undefinied");
+
+function itemName($inPack){
+    switch ($inPack) {
+        case "post":
+            $inPack = POSTCARD;
+            break;
+        case "lett":
+            $inPack = LETTER;
+            break;
+        case "flat":
+            $inPack = FLAT;
+            break;
+        case "prcl":
+            $inPack = PARCEL;
+            break;
+        default:
+            $inPack = UNDEFINED;
+    }
+    return $inPack;
+}
+
+function sizeRange($srForm,$srPack,$srNumA,$srNumB) {
+    global $e;
+    if ($srForm["ftype"] == $srPack){
+        if ($srForm["fsize"] > $srNumA) {
+            echo 'Length for '. itemName($srPack). 's must not exceed '. $srNumA. ' inches. <br>';
+            $e++;
+        } else if ($srForm["fsize"] < $srNumB) {
+            echo 'Length for '. itemName($srPack). 's must be at least '. $srNumB. ' inches. <br>';
+            $e++;
+        }
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] =="POST") {
     
     //Valid Date
@@ -69,43 +115,10 @@ if ($_SERVER["REQUEST_METHOD"] =="POST") {
     dataRange($dateEx,$dateOr,"Day");
     
     //Valid Size
-    //postcard
-    if ($_POST["ftype"] == "post") {
-        if ($_POST["fsize"] > 6){
-            echo 'Length for postcards must not exceed 6 inches.<br>';
-            $e++;
-        }
-    }
-    //letter
-    if ($_POST["ftype"] == "lett") {
-        if ($_POST["fsize"] > 11) {
-            echo 'Length for letters must not exceed 11 1/2 inches.<br>';
-            $e++;
-        } else if ($_POST["fsize"] < 5) {
-            echo 'Length for letters must at least be 5 inches.<br>';
-            $e++;
-        }
-    }
-    //flat
-    if ($_POST["ftype"] == "flat") {
-        if ($_POST["fsize"] > 15) {
-            echo 'Length for flats must not exceed 15 inches.<br>';
-            $e++;
-        } else if ($_POST["fsize"] < 12) {
-            echo 'Length for flats must at least be 11 1/2 inches.<br>';
-            $e++;
-        }
-    }
-    //parcel
-    if ($_POST["ftype"] == "prcl") {
-        if ($_POST["fsize"] > 27) {
-            echo 'Length for parcels must not exceed 27 inches.<br>';
-            $e++;
-        } else if ($_POST["fsize"] < 6) {
-            echo 'Length for parcels must at least be 6 inches.<br>';
-            $e++;
-        }
-    }
+    sizeRange($_POST,"post",POST_MAX,POST_MIN);
+    sizeRange($_POST,"lett",LETT_MAX,LETT_MIN);
+    sizeRange($_POST,"flat",FLAT_MAX,FLAT_MIN);
+    sizeRange($_POST,"prcl",PRCL_MAX,PRCL_MIN);
     
     //Write to File
     //error check
@@ -115,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] =="POST") {
         fwrite($lmake, $a);
         fwrite($lmake, $b);
     } else {
-        echo 'Error(s): ' , $e, '. See above for explanation.';
+        echo 'Error(s): '. $e. '. See above for explanation.';
     }
 }
 fclose($lmake);
