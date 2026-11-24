@@ -1,9 +1,7 @@
 <html>
 <body>
 
-<?php
-$month = array("0"=>"January","1"=>"February","2"=>"March","3"=>"April","4"=>"May","5"=>"June","6"=>"July","7"=>"August","8"=>"September","9"=>"October","10"=>"November","11"=>"December");
-$larr = array();
+<?php require 'variables.php';
 
 //Constants
 define("YEAR_MAX", 1999);
@@ -15,8 +13,6 @@ define("DAY_MIN", 32);
 
 define("MIN","min");
 define("MAX","max");
-
-$cDate = 01012000;
 
 function numTrim($fNum = 01) {
     if(substr($fNum,0,1) == 0){
@@ -81,8 +77,6 @@ if(! file_exists("dlist.txt")){
     echo "File does not exist.". "<br/>";
 } else {
 $read = fopen("dlist.txt", "r");
-?>
-<?php
 
 $inti = -1;
 $nemt = "";
@@ -120,10 +114,9 @@ for($i = 0; $i < count($larr);$i++) {
 }
 
 $final = $larr[2][0];
-echo "The ". $ttype. ". delivery time in the list is ". $temp. " days, from order, \"". $larr[$tempN][0]. "\".";
+echo "The ". $ttype. ". delivery time in the list is ". $temp. " days, from order, \"". $larr[$tempN][0]. "\". <br/>";
 
 fclose($read);
-
 }
 ?>
 <p><a href = "calculations.html">Return</a></p>

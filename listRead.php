@@ -1,13 +1,10 @@
 <html>
 <body>
-<h1>List of Past deliveries</h1>
-<?php
+<!--<h1>List of Past deliveries</h1>-->
+<?php require 'variables.php';
 
 //Info is grabbed from list line by line and put into temporary Multidimensional Arrays
 
-//Variables
-$month = array("0"=>"January","1"=>"February","2"=>"March","3"=>"April","4"=>"May","5"=>"June","6"=>"July","7"=>"August","8"=>"September","9"=>"October","10"=>"November","11"=>"December");
-$larr = array();
 //Functions
 //For Day or Month only
 function numTrim($fNum = 01) {
@@ -79,6 +76,6 @@ for($i = 0; $i < count($larr);$i++) {
 fclose($readl);
 }
 ?>
-<p><a href = "list.html">Return</a></p>
+<!-- <p><a href = "list.html">Return</a></p> -->
 </body>
 </html>

@@ -2,12 +2,14 @@
 <body>
 <?php $lmake = fopen("dlist.txt", "a");?>
 <!--Debugging Only-->
+<!--
 Name: "<?php echo $_POST["fname"];?>"<br>
 Order: "<?php echo $_POST["ffrst"];?>"<br>
 Expected: "<?php echo $_POST["fexpt"];?>"<br>
 Actual: "<?php echo $_POST["factu"];?>"<br>
 Type: "<?php echo $_POST["ftype"];?>"<br>
 Size: "<?php echo $_POST["fsize"];?>"<br>
+-->
 <?php
 
 //variables
@@ -128,13 +130,13 @@ if ($_SERVER["REQUEST_METHOD"] =="POST") {
         fwrite($lmake, $a);
         fwrite($lmake, $b);
     } else {
-        echo 'Error(s): '. $e. '. See above for explanation.';
+        echo 'Number of error(s): '. $e. '. See above for explanation.';
     }
 }
 fclose($lmake);
 ?>
 
-<p><a href = "list.html">Add more items</a></p>
+<!--<p><a href = "list.html">Add more items</a></p>-->
 
 </body>
 </html>

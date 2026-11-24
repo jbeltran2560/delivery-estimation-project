@@ -6,7 +6,7 @@
 <body>
 <h1>Add Item to List</h1>
 <!-- Form for User Input -->
-<form action="form_complete.php" method="post">
+<form id = "fAddItem" action="form_complete.php" method="post" autocomplete="on" target="printedlist">
     <!-- Delivery Name -->
     <label for = "fname"> Name of delivery:</label><br>
     <input type = "text" id = "fname" name = "fname" maxlength="20" size="20" value="Example" required><br>
@@ -32,11 +32,32 @@
     <label for = "fsize"> length of package in inches:</label> <br>
     <input type="number" id="fsize" name="fsize" min="3" max="130" value="4" required><br>
     <button type="submit">Add Item</button>
-    <button type="reset">Clear Item</button>
+    <button type="reset">Clear Form</button>
+    <br/>
 </form>
-<button onclick="alert('Okay')">Load</button>
-<button onclick="document.location='listRead.php'">Print Entire List</button>
+<button onclick = "alert('Okay')">Load</button>
+<button onclick = "printList()">Print Entire List</button>
+<button id= "bprint" onclick="listClose()">Collapse</button>
 <p><a href = "calculations.html">Calculations</a></p>
 <p><a href = "homepage.html">Return Home</a></p>
+<iframe src="iframebox.html" id ="ifOne" name="printedlist" width="400"></iframe>
+<h1>Sort List</h1>
+
+<script>
+function listClose(){
+    //let change = <button id = "bprint" onclick="document.getElementById('fAddItem').style.display='block'">AAA</button>;
+    document.getElementById("fAddItem").style.display ="none";
+    document.getElementById("bprint").outerHTML = "<button id = 'bprint' onclick='listOpen()'>Expand</button>";
+}
+function listOpen() {
+    document.getElementById("fAddItem").style.display ="inline";
+    document.getElementById("bprint").outerHTML = "<button id= 'bprint' onclick='listClose()'>Collapse</button>";
+    //document.getElementById("bprint").outerHTML
+}
+function printList() {
+    document.getElementById("ifOne").outerHTML = "<iframe src='listRead.php' id = 'ifOne' name = 'printedlist' width = '1100'><iframe>";
+}
+
+</script>
 </body>
 </html>
