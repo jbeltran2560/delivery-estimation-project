@@ -4,18 +4,21 @@
 <title>Package Estimation - Calculations</title>
 </head>
 <body>
-<h1> Calculations Delivery Time </h1>
+<h1> Calculations</h1>
 
-<h2> Delivery Time </h2>
-<p> Choose either option below.</p>
-
-<form action = "cal.php" method = "post">
-    <input type = "radio" id = "min" name="type" value = "min">
-    <label for = "min">Min</label><br>
-    <input type = "radio" id = "max" name="type" value = "max">
-    <label for = "max">Max</label><br>
+<form action = "cal.php" method = "post" target="calculate">
+    <label for = "type"> Delivery Times</label><br>
+    <select id = "type" name = "type">
+        <option value="min">Min</option>
+        <option value="max">Max</option>
+    </select> <br>
+    
+    
     <button type="submit">Calculate</button>
+    <br>
 </form>
+<br>
+<iframe src="iframebox.html" name="calculate"></iframe>
 <!-- <?php $myfile = fopen("newfile.txt", "w") or die("File not found."); ?> -->
 <h2>Troubleshooting</h2>
 <p>The list must contain at least two entries in order to work properly.</p>

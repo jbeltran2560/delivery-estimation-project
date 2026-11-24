@@ -119,6 +119,6 @@ echo "The ". $ttype. ". delivery time in the list is ". $temp. " days, from orde
 fclose($read);
 }
 ?>
-<p><a href = "calculations.html">Return</a></p>
+<!--<p><a href = "calculations.html">Return</a></p>-->
 </html>
 </body>
