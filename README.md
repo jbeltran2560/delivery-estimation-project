@@ -19,6 +19,10 @@ Either possibility ends by clicking on "Add more items" to return back to the pr
 After making entries, click on "calculations" to find the values using the list.
 Calculations is currently unfinished.
 
+# Sprint 2 Functionality
+Finished Sprint 1 calculations.
+Jest must be installed so testcases can be used.
+
 #Limitations
 Any information typed in the form in "Modify List" resets when "Add Item" is clicked.
 Form is missing more options regarding packages.
